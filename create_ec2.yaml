@@ -1,0 +1,26 @@
+---
+- hosts: localhost
+  connection: local
+  vars_files:
+    - group_vars/all/pass.yml
+
+  tasks:
+  - name: start an instance with a public IP address
+    amazon.aws.ec2_instance:
+      name: "{{ item.name }}"
+      key_name: "ansible-keypair"
+      vpc_subnet_id: subnet-073da82f15f0d0b00
+      instance_type: t2.micro
+      security_group: default
+      region: ap-south-1
+      aws_access_key: "{{ec2_access_key}}"
+      aws_secret_key: "{{ec2_secret_key}}"      
+      network_interfaces:
+        - assign_public_ip: true
+      image_id: "{{ item.image }}"
+      tags:
+        Environment: Testing
+    loop:
+      - { image: "ami-0685bcc683dadb6b9", name: "managed-node-1" }
+      - { image: "ami-07a00cf47dbbc844c", name: "managed-node-2" }
+      - { image: "ami-07a00cf47dbbc844c", name: "managed-node-3" }
