@@ -1,13 +1,8 @@
 # Ansible Realtime project
 Ansible project using three tasks. 
-Use Ansible to create Three EC2 instances, one of type Amazon Linux and 2 instances of types Ubuntu. Make sure to secure the AWS credentials in Ansible vault.
-Setup passwordless authentication with the created EC2 instances. 
-Shutdown only selected EC2 instances using Ansible conditionals (When condition).
-
-[all]
-ec2-user@13.232.240.213
-ubuntu@65.2.167.175
-ubuntu@13.232.48.111
+1) Use Ansible to create Three EC2 instances, one of type Amazon Linux and 2 instances of types Ubuntu. Make sure to secure the AWS credentials in Ansible vault.
+2) Setup passwordless authentication with the created EC2 instances. 
+3) Shutdown only selected EC2 instances using Ansible conditionals (When condition).
 
 ## Task 1
 
